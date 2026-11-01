@@ -26,11 +26,21 @@ jobs:
         run: npm run build
         env:
           GITHUB_PAGES: 'true'
-      - name: SPA fallback
-        run: cp dist/index.html dist/404.html
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
+      - name: Prepare docs
+        run: |
+          rm -rf docs
+          mkdir docs
+          cp -r dist/. docs/
+          cp dist/index.html docs/404.html
+          touch docs/.nojekyll
+      - name: Commit docs site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          if git diff --staged --quiet; then
+            echo "No docs changes"
+            exit 0
+          fi
+          git commit -m "Publish GitHub Pages site to docs/ [skip ci]"
+          git push
