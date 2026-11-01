@@ -15,6 +15,12 @@ npm run dev
 
 ## GitHub Pages
 
-Pushing to `main` builds and deploys via `.github/workflows/deploy.yml`.
+Pushing to `main` builds the app and publishes the `gh-pages` branch.
 
-If the site is not live yet, open the repo **Settings → Pages**, set **Source** to **GitHub Actions**, then re-run the **Deploy GitHub Pages** workflow.
+One-time setup (if the live URL is not active yet):
+
+1. Open [Settings → Pages](https://github.com/olgar162001/balloon-Safaris/settings/pages)
+2. Under **Build and deployment → Source**, choose **Deploy from a branch**
+3. Branch: `gh-pages` / folder: `/ (root)` → Save
+
+The site will be available at https://olgar162001.github.io/balloon-Safaris/
