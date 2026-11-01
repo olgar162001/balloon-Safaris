@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import { Tip } from '@/components/ui'
 import { ModuleScreen } from '@/components/ModuleScreen'
 import { Shell } from '@/components/Shell'
@@ -22,11 +22,12 @@ function Ledger({ kind }: { kind: LedgerKind }) {
   return <ModuleScreen kind={kind} />
 }
 
-const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+const useHash = import.meta.env.BASE_URL !== '/'
+const Router = useHash ? HashRouter : BrowserRouter
 
 export default function App() {
   return (
-    <BrowserRouter basename={basename || undefined}>
+    <Router>
       <Tip.Provider delayDuration={200}>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -35,7 +36,7 @@ export default function App() {
           <Route path="/*" element={<Workspace />} />
         </Routes>
       </Tip.Provider>
-    </BrowserRouter>
+    </Router>
   )
 }
 

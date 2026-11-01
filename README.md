@@ -13,16 +13,16 @@ npm install
 npm run dev
 ```
 
-## GitHub Pages (required once)
+## GitHub Pages setup (required)
 
-The built site lives in the `docs/` folder on `main`.
+The production build is published to the `gh-pages` branch.
 
 1. Open [Settings → Pages](https://github.com/olgar162001/balloon-Safaris/settings/pages)
 2. **Source:** Deploy from a branch
-3. **Branch:** `main`
-4. **Folder:** `/docs`
+3. **Branch:** `gh-pages`
+4. **Folder:** `/ (root)`
 5. Save
 
-Wait 1 to 2 minutes, then open https://olgar162001.github.io/balloon-Safaris/
+Wait 1 to 2 minutes, hard-refresh the site (`Ctrl+Shift+R`).
 
-Do not use `/ (root)` on `main`. That serves the Vite source file and shows a blank page.
+Do **not** use `main` + `/docs` or `main` + `/ (root)`. Those serve the wrong files and show a blank page.

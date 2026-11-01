@@ -8,7 +8,8 @@ const root = path.dirname(fileURLToPath(import.meta.url))
 const pages = process.env.GITHUB_PAGES === 'true'
 
 export default defineConfig({
-  base: pages ? '/balloon-Safaris/' : '/',
+  // Relative assets work on GitHub Pages project sites without path mismatches.
+  base: pages ? './' : '/',
   plugins: [react()],
   resolve: {
     alias: {
